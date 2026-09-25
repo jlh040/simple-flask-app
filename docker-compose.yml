@@ -1,0 +1,7 @@
+services:
+  webb:
+    build: .
+    ports:
+      - "4000:8080"
+    volumes:
+      - .:/app
