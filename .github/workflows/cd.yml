@@ -35,6 +35,10 @@ jobs:
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
+      - name: debugging test for ecr image
+        run: |
+          echo "The output image is: '${{ steps.build-image.outputs.image }}"
+
   deploy:
     name: Deploy to staging
     runs-on: ubuntu-latest
