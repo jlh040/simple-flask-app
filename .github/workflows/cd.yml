@@ -52,6 +52,9 @@ jobs:
         aws-region: ${{ env.AWS_REGION }}
     - name: Terraform Init
       run: terraform -chdir=terraform init
+    - name: Debug Output Context
+      run: |
+        echo "The inherited image URI is: '${{ needs.build-and-push.outputs.image }}'"
     - name: Terraform Apply
       run: terraform -chdir=terraform apply -auto-approve -var="ecr_image_identifier=${{ needs.build-and-push.outputs.image }}"
 
