@@ -39,7 +39,7 @@ jobs:
       - name: Scan container image for vulnerabilities
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: jleon28/simple-flask-app:$IMAGE_TAG
+          image-ref: jleon28/simple-flask-app:${{ github.sha }}
           severity: 'HIGH,CRITICAL'
           exit-code: '1'
 
